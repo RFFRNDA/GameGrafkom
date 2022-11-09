@@ -1,2 +1,2 @@
-# GameGrafkom
+# Game Grafkom
 Grafkom | PyOpenGL
