@@ -34,8 +34,6 @@ def kotak(x,y,height,width,color):
 
 def char1():
     glTranslated(xPosition, yPosition, 0)
-    glScaled(xScale,yScale,0)
-    glRotated(rotate, 0, 0, 3)
 
     # --- Main Character ---
     kotak(0,4,4,17,lightcream)
@@ -105,23 +103,6 @@ def mySpecialKeyboard(key, x, y):
         yPosition += 100
     elif key == GLUT_KEY_DOWN:
         yPosition -= 100
-    elif key == GLUT_KEY_PAGE_UP:
-        xScale += .1
-        yScale += .1
-    elif key == GLUT_KEY_PAGE_DOWN:
-        if xScale < 0.2 and yScale < 0.2:
-            xScale -= 0
-            yScale -= 0
-        else:
-            xScale -= .1
-            yScale -= .1
-
-def rotated(key, x, y):
-    global rotate
-    if key == b'.':
-        rotate -= 10
-    elif key == b',':
-        rotate += 10
 
 def iterate():
     glViewport(0, 0, 1500, 1500)
