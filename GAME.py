@@ -7,9 +7,6 @@ w,h= 500,500
 
 xPosition = 0
 yPosition = 0
-xScale = 1
-yScale = 1
-rotate = 0
 
 def botlimit():
     glBegin(GL_POLYGON) 
