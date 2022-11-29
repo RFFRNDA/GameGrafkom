@@ -2,7 +2,6 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
-
 os.system('cls')
 w,h= 500,500
 
@@ -11,6 +10,16 @@ yPosition = 0
 xScale = 1
 yScale = 1
 rotate = 0
+
+def botlimit():
+    glBegin(GL_POLYGON) 
+    glColor3ub(101,80,75)
+    glVertex2f(-1000,-930) 
+    glVertex2f(-1000,-1000) 
+    glVertex2f(1000,-1000) 
+    glVertex2f(1000,-930) 
+    glEnd()
+
 
 black = 0,0,0
 lightcream = 247,209,183
@@ -117,6 +126,7 @@ def showScreen():
     glClearColor(255,255,255,1)
     glLoadIdentity()
     iterate()
+    botlimit()
     char1()
     glutSwapBuffers()
 
