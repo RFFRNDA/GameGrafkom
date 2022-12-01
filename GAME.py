@@ -1,6 +1,9 @@
+import OpenGL.GLUT as glut
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
+import random
+import time
 
 os.system('cls')
 
@@ -170,7 +173,6 @@ def start_game():
 def play_game():
     toplimit()
     botlimit()
-    char2()
     char1() 
 
 def iterate():
