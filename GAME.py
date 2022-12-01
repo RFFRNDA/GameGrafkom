@@ -7,6 +7,21 @@ os.system('cls')
 xPosition = 0
 yPosition = 0
 
+def drawTextBold(ch,xpos,ypos):
+    glPushMatrix()
+    color = (0,0,0)
+    font_style = glut.GLUT_BITMAP_HELVETICA_18
+    glColor3ub(color[0],color[1],color[2])
+    line=0
+    glRasterPos2f (xpos, ypos)
+    for i in ch:
+       if  i=='\n':
+          line=line+1
+          glRasterPos2f (xpos, ypos*line)
+       else:
+          glutBitmapCharacter(font_style, ord(i))  
+    glPopMatrix()  
+
 def toplimit():
     glBegin(GL_POLYGON) 
     glColor3ub(101,80,75)
@@ -125,6 +140,39 @@ def mySpecialKeyboard(key, x, y):
             yPosition += 20
     print(xPosition , ' ', yPosition)
 
+def mouse_play_game(button, state, x, y):       # Click start game
+    global play
+    if button == GLUT_LEFT_BUTTON:
+        if 610 <= x <= 800 and 245 <= y <= 345:
+            play = True
+        print(x,' ',y)
+
+def start_game():
+    glPushMatrix()
+    glColor3b(36, 150, 127)
+    glBegin(GL_QUADS)
+    glVertex2f(610,345) 
+    glVertex2f(610,245) 
+    glVertex2f(800,245) 
+    glVertex2f(800,345) 
+    glEnd()
+    glColor3ub(0,0,0)
+    glLineWidth(3)
+    glBegin(GL_LINE_LOOP)
+    glVertex2f(610,345) 
+    glVertex2f(610,245) 
+    glVertex2f(800,245) 
+    glVertex2f(800,345) 
+    glEnd()
+    glPopMatrix()
+    drawTextBold("P L A Y G A M E", 640, 285)
+
+def play_game():
+    toplimit()
+    botlimit()
+    char2()
+    char1() 
+
 def iterate():
     glViewport(0, 0, 1450, 600)
     glMatrixMode(GL_PROJECTION)
@@ -138,15 +186,16 @@ def showScreen():
     glClearColor(255,255,255,1)
     glLoadIdentity()
     iterate()
-    toplimit()
-    botlimit()
-    char1()
+    if play == False:
+        start_game()
+    else:
+        play_game()
     glutSwapBuffers()
 
 glutInit()
 glutInitDisplayMode(GLUT_RGBA)
 glutInitWindowSize(1450, 600)
-glutInitWindowPosition(40 100)
+glutInitWindowPosition(40, 100)
 wind = glutCreateWindow("My Game")
 glutDisplayFunc(showScreen)
 glutIdleFunc(showScreen)
