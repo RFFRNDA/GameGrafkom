@@ -7,9 +7,26 @@ import time
 
 os.system('cls')
 
+play = False
 xPosition = 0
 yPosition = 0
 
+
+#=== draw text ================================================================================
+
+def drawText(ch,xpos,ypos,r,b,g):
+    color = (r, b, g)
+    font_style = glut.GLUT_BITMAP_8_BY_13
+    glColor3ub(color[0],color[1],color[2])
+    line=0
+    glRasterPos2f (xpos, ypos)
+    for i in ch:
+       if  i=='\n':
+          line=line+1
+          glRasterPos2f (xpos, ypos*line)
+       else:
+          glutBitmapCharacter(font_style, ord(i))    
+ 
 def drawTextBold(ch,xpos,ypos):
     glPushMatrix()
     color = (0,0,0)
@@ -24,6 +41,19 @@ def drawTextBold(ch,xpos,ypos):
        else:
           glutBitmapCharacter(font_style, ord(i))  
     glPopMatrix()  
+
+
+#=== Colors =================================================================================
+
+black = 0,0,0
+lightcream = 247,209,183
+cream = 211,133,101
+brown = 77,60,56
+lightbrown = 101,80,75
+maroon = 108,37,65
+brick = 194,67,62
+lightgrey = 42,51,55
+grey = 30,37,42
 
 def toplimit():
     glBegin(GL_POLYGON) 
@@ -43,17 +73,7 @@ def botlimit():
     glVertex2f(1500,-10) 
     glEnd()
 
-
-black = 0,0,0
-lightcream = 247,209,183
-cream = 211,133,101
-brown = 77,60,56
-lightbrown = 101,80,75
-maroon = 108,37,65
-brick = 194,67,62
-lightgrey = 42,51,55
-grey = 30,37,42
-
+#=== Character =============================================================================
 
 def kotak(x,y,height,width,color):
     glBegin(GL_POLYGON) 
@@ -64,10 +84,8 @@ def kotak(x,y,height,width,color):
     glVertex2f((x+50) + width, (y+100))
     glEnd()
 
-def char1():
+def char1():    # Main Character
     glTranslated(xPosition, yPosition, 0)
-
-    # --- Main Character ---
     kotak(0,4,4,17,lightcream)
     kotak(-4,19,15,21,lightcream)
     kotak(17,10,6,5,lightcream)
@@ -121,7 +139,6 @@ def char1():
     kotak(14,19,9,6,black)  # Eye
     kotak(-10,19,9,6,black) # Eye
 
-
 def mySpecialKeyboard(key, x, y): 
     global xPosition
     global yPosition
@@ -142,6 +159,8 @@ def mySpecialKeyboard(key, x, y):
         if yPosition <= -50:
             yPosition += 20
     print(xPosition , ' ', yPosition)
+
+#=== Engine =====================================================================
 
 def mouse_play_game(button, state, x, y):       # Click start game
     global play
@@ -175,6 +194,8 @@ def play_game():
     botlimit()
     char1() 
 
+#================================================================================
+
 def iterate():
     glViewport(0, 0, 1450, 600)
     glMatrixMode(GL_PROJECTION)
@@ -192,14 +213,19 @@ def showScreen():
         start_game()
     else:
         play_game()
-    glutSwapBuffers()
 
-glutInit()
-glutInitDisplayMode(GLUT_RGBA)
-glutInitWindowSize(1450, 600)
-glutInitWindowPosition(40, 100)
-wind = glutCreateWindow("My Game")
-glutDisplayFunc(showScreen)
-glutIdleFunc(showScreen)
-glutSpecialFunc(mySpecialKeyboard)
-glutMainLoop()
+    glutSwapBuffers() #utk membersihkan layar, double buffering
+
+def main():
+    glutInit()
+    glutInitDisplayMode(GLUT_RGBA)
+    glutInitWindowSize(1450, 600)
+    glutInitWindowPosition(40, 100)
+    wind = glutCreateWindow("My Game")
+    glutDisplayFunc(showScreen)
+    glutIdleFunc(showScreen)
+    glutSpecialFunc(mySpecialKeyboard)
+    glutMouseFunc(mouse_play_game)
+    glutMainLoop()
+
+main()
