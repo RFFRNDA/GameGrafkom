@@ -3,18 +3,26 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 
 os.system('cls')
-w,h= 500,500
 
 xPosition = 0
 yPosition = 0
 
+def toplimit():
+    glBegin(GL_POLYGON) 
+    glColor3ub(101,80,75)
+    glVertex2f(0,590) 
+    glVertex2f(0,600) 
+    glVertex2f(1500,600) 
+    glVertex2f(1500,590) 
+    glEnd()
+
 def botlimit():
     glBegin(GL_POLYGON) 
     glColor3ub(101,80,75)
-    glVertex2f(-1000,-930) 
-    glVertex2f(-1000,-1000) 
-    glVertex2f(1000,-1000) 
-    glVertex2f(1000,-930) 
+    glVertex2f(0,-10) 
+    glVertex2f(0,30) 
+    glVertex2f(1500,30) 
+    glVertex2f(1500,-10) 
     glEnd()
 
 
@@ -32,10 +40,10 @@ grey = 30,37,42
 def kotak(x,y,height,width,color):
     glBegin(GL_POLYGON) 
     glColor3ub(color[0],color[1],color[2])
-    glVertex2f((x-900),(y-600)) # pojok kiri atas
-    glVertex2f((x-900), ((y-600) - height))
-    glVertex2f(((x-900) + width), ((y-600) - height))
-    glVertex2f(((x-900) + width), (y-600))
+    glVertex2f(x+50,y+100) # pojok kiri atas
+    glVertex2f((x+50), (y+100) - height)
+    glVertex2f((x+50) + width, (y+100) - height)
+    glVertex2f((x+50) + width, (y+100))
     glEnd()
 
 def char1():
@@ -99,22 +107,29 @@ def char1():
 def mySpecialKeyboard(key, x, y): 
     global xPosition
     global yPosition
-    global xScale
-    global yScale
     if key == GLUT_KEY_LEFT:
-        xPosition -= 100
+        xPosition -= 20
+        if xPosition <= -30:
+            xPosition += 20
     elif key == GLUT_KEY_RIGHT:
-        xPosition += 100
+        xPosition += 20
+        if xPosition >= 1380:
+            xPosition -=20
     elif key == GLUT_KEY_UP:
-        yPosition += 100
+        yPosition += 20
+        if yPosition >= 450:
+            yPosition -=20
     elif key == GLUT_KEY_DOWN:
-        yPosition -= 100
+        yPosition -= 20
+        if yPosition <= -50:
+            yPosition += 20
+    print(xPosition , ' ', yPosition)
 
 def iterate():
-    glViewport(0, 0, 1500, 1500)
+    glViewport(0, 0, 1450, 600)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    glOrtho(-1000, 1000, -1000, 1000, 0.0, 1.0)
+    glOrtho(0.0, 1450, 0.0, 600, 0.0, 1.0)
     glMatrixMode (GL_MODELVIEW)
     glLoadIdentity()
 
@@ -123,18 +138,17 @@ def showScreen():
     glClearColor(255,255,255,1)
     glLoadIdentity()
     iterate()
+    toplimit()
     botlimit()
     char1()
     glutSwapBuffers()
 
-
 glutInit()
 glutInitDisplayMode(GLUT_RGBA)
 glutInitWindowSize(1450, 600)
-glutInitWindowPosition(30 100)
-wind = glutCreateWindow("OpenGL Coding Practice")
+glutInitWindowPosition(40 100)
+wind = glutCreateWindow("My Game")
 glutDisplayFunc(showScreen)
 glutIdleFunc(showScreen)
 glutSpecialFunc(mySpecialKeyboard)
-glutKeyboardFunc(rotated)
 glutMainLoop()
