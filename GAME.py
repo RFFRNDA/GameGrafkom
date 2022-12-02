@@ -54,6 +54,9 @@ maroon = 108,37,65
 brick = 194,67,62
 lightgrey = 42,51,55
 grey = 30,37,42
+pink = 243,121,168
+softgrey = 145,135,139
+red = 237,35,36
 
 def toplimit():
     glBegin(GL_POLYGON) 
@@ -160,7 +163,7 @@ def mySpecialKeyboard(key, x, y):
             yPosition += 20
     print(xPosition , ' ', yPosition)
     
- xpos_ghost1 = 1000
+xpos_ghost1 = 1000
 ypos_ghost1 = random.randrange(-220,250,5)
 
 def kotak2(x,y,height,width,color):
@@ -265,6 +268,7 @@ def start_game():
 def play_game():
     toplimit()
     botlimit()
+    char2()
     char1() 
 
 #================================================================================
