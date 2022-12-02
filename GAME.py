@@ -159,6 +159,79 @@ def mySpecialKeyboard(key, x, y):
         if yPosition <= -50:
             yPosition += 20
     print(xPosition , ' ', yPosition)
+    
+ xpos_ghost1 = 1000
+ypos_ghost1 = random.randrange(-220,250,5)
+
+def kotak2(x,y,height,width,color):
+    glBegin(GL_POLYGON) 
+
+    glColor3ub(color[0],color[1],color[2])
+    glVertex2f(x , y) # pojok kiri atas
+    glVertex2f(x , y - height)
+    glVertex2f(x + width , y - height)
+    glVertex2f(x + width , y)
+    glEnd()
+
+def char2():    # Ghost
+    global xpos_ghost1,ypos_ghost1
+    glPushMatrix()
+    glTranslated(xpos_ghost1,ypos_ghost1,0)
+    xpos_ghost1 -= 0.5
+    if xpos_ghost1 <= -1000:
+        xpos_ghost1 = 1000
+        ypos_ghost1 = random.randrange(-220,250,5)
+    kotak2(1019,337,3,25,black)
+    kotak2(1016,334,3,3,black)
+    kotak2(1013,331,3,3,black)
+    kotak2(1010,328,3,3,black)
+    kotak2(1007,325,5,3,black)
+    kotak2(1004,320,16,3,black)
+    kotak2(1001,304,4,6,black)
+    kotak2(997,300,6,4,black)
+    kotak2(1001,294,4,9,black)
+    kotak2(1044,334,3,3,black)
+    kotak2(1047,331,3,3,black)
+    kotak2(1050,328,6,3,black)
+    kotak2(1053,322,22,3,black)
+    kotak2(1056,300,3,3,black)
+    kotak2(1059,297,3,8,black)
+    kotak2(1067,300,3,3,black)
+    kotak2(1070,297,13,3,black)
+    kotak2(1067,285,7,3,black)
+    kotak2(1064,278,3,3,black)
+    kotak2(1057,275,3,7,black)
+    kotak2(1028,272,3,31,black)
+    kotak2(1022,275,3,6,black)
+    kotak2(1019,278,3,3,black)
+    kotak2(1016,281,3,3,black)
+    kotak2(1013,284,3,3,black)
+    kotak2(1010,290,6,3,black)
+    kotak2(1038,304,3,9,black)
+    kotak2(1035,301,6,3,black)
+    kotak2(1038,296,3,11,black)
+    kotak2(1013,315,6,6,pink) # chik
+    kotak2(1034,315,6,6,pink) # chik
+    kotak2(1016,322,9,6,black) # eye
+    kotak2(1031,322,9,6,black) # eye
+    kotak2(1022,309,3,7,black) # mouth
+    kotak2(1001,300,3,6,softgrey) 
+    kotak2(1001,300,3,6,softgrey) 
+    kotak2(1007,320,20,3,softgrey) 
+    kotak2(1009,325,5,3,softgrey) 
+    kotak2(1013,327,3,3,softgrey) 
+    kotak2(1016,331,3,3,softgrey) 
+    kotak2(1019,334,3,25,softgrey) 
+    kotak2(1043,331,3,3,softgrey) 
+    kotak2(1047,328,6,3,softgrey) 
+    kotak2(1049,322,3,3,softgrey) 
+    kotak2(1010,293,3,3,softgrey) 
+    kotak2(1013,290,6,3,softgrey) 
+    kotak2(1016,284,3,3,softgrey) 
+    kotak2(1019,281,3,3,softgrey) 
+    kotak2(1022,278,3,6,softgrey) 
+    kotak2(1028,275,3,23,softgrey) 
+    glPopMatrix()
 
 #=== Engine =====================================================================
 
