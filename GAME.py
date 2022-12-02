@@ -235,6 +235,85 @@ def char2():    # Ghost
     kotak2(1022,278,3,6,softgrey) 
     kotak2(1028,275,3,23,softgrey) 
     glPopMatrix()
+    
+xpos_ghost2 = 1000
+ypos_ghost2 = random.randrange(-220,250,5)
+
+def char3():    # Angry Ghost
+    global xpos_ghost2,ypos_ghost2
+    glPushMatrix()
+    glTranslated(xpos_ghost2,ypos_ghost2,0)
+    xpos_ghost2 -= 1
+    if xpos_ghost2 <= -2000:
+        xpos_ghost2 = 1000
+        ypos_ghost2 = random.randrange(-220,250,5)
+    kotak2(1219,337,3,25,black)
+    kotak2(1216,334,3,3,black)
+    kotak2(1213,331,3,3,black)
+    kotak2(1210,328,3,3,black)
+    kotak2(1207,325,5,3,black)
+    kotak2(1204,320,16,3,black)
+    kotak2(1201,304,4,6,black)
+    kotak2(1197,306,4,4,black)
+    kotak2(1193,304,8,4,black)
+    kotak2(1197,297,4,4,black)
+    kotak2(1201,294,4,9,black)
+    kotak2(1244,334,3,3,black)
+    kotak2(1247,331,3,3,black)
+    kotak2(1250,328,6,3,black)
+    kotak2(1253,322,22,3,black)
+    kotak2(1256,300,3,3,black)
+    kotak2(1259,297,3,8,black)
+    kotak2(1267,300,3,3,black)
+    kotak2(1270,297,13,3,black)
+    kotak2(1267,285,7,3,black)
+    kotak2(1264,278,3,3,black)
+    kotak2(1257,275,3,7,black)
+    kotak2(1228,272,3,31,black)
+    kotak2(1222,275,3,6,black)
+    kotak2(1219,278,3,3,black)
+    kotak2(1216,281,3,3,black)
+    kotak2(1213,284,3,3,black)
+    kotak2(1210,290,6,3,black)
+    kotak2(1244,304,4,7,black)
+    kotak2(1240,307,4,4,black)
+    kotak2(1236,304,8,4,black)
+    kotak2(1240,296,4,4,black)
+    kotak2(1244,294,4,9,black)
+    kotak2(1213,315,6,6,pink) # chik
+    kotak2(1234,315,6,6,pink) # chik
+    kotak2(1216,322,9,6,black) # eye
+    kotak2(1231,322,9,6,black) # eye
+    kotak2(1216,306,11,15,red) # - mouth -
+    kotak2(1214,304,9,2,black) #
+    kotak2(1216,306,2,3,black) #
+    kotak2(1219,308,2,3,black) #
+    kotak2(1222,306,2,3,black) #
+    kotak2(1226,308,2,3,black) # 
+    kotak2(1228,306,2,3,black) #
+    kotak2(1216,295,2,3,black) #
+    kotak2(1219,297,2,3,black) #
+    kotak2(1222,295,2,3,black) #
+    kotak2(1226,297,2,3,black) #
+    kotak2(1228,295,2,3,black) #
+    kotak2(1231,304,9,2,black) # - mouth -
+    kotak2(1201,300,3,6,softgrey) 
+    kotak2(1201,300,3,6,softgrey) 
+    kotak2(1207,320,20,3,softgrey) 
+    kotak2(1209,325,5,3,softgrey) 
+    kotak2(1213,327,3,3,softgrey) 
+    kotak2(1216,331,3,3,softgrey) 
+    kotak2(1219,334,3,25,softgrey) 
+    kotak2(1243,331,3,3,softgrey) 
+    kotak2(1247,328,6,3,softgrey) 
+    kotak2(1249,322,3,3,softgrey) 
+    kotak2(1210,293,3,3,softgrey) 
+    kotak2(1213,290,6,3,softgrey) 
+    kotak2(1216,284,3,3,softgrey) 
+    kotak2(1219,281,3,3,softgrey) 
+    kotak2(1222,278,3,6,softgrey) 
+    kotak2(1228,275,3,23,softgrey) 
+    glPopMatrix()
 
 #=== Engine =====================================================================
 
