@@ -41,6 +41,19 @@ def drawTextBold(ch,xpos,ypos):
        else:
           glutBitmapCharacter(font_style, ord(i))  
     glPopMatrix()  
+ 
+def drawTextNum(skor,xpos,ypos,r,b,g):
+    color = (r, b, g)
+    font_style = glut.GLUT_BITMAP_8_BY_13
+    glColor3ub(color[0],color[1],color[2])
+    line=0
+    glRasterPos2f (xpos, ypos)
+    for i in str(skor):
+       if  i=='\n':
+          line=line+1
+          glRasterPos2f (xpos, ypos*line)
+       else:
+          glutBitmapCharacter(font_style, ord(i))
 
 
 #=== Colors =================================================================================
@@ -151,19 +164,19 @@ def mySpecialKeyboard(key, x, y):
     global yPosition
     if key == GLUT_KEY_LEFT:
         xPosition -= 20
-        if xPosition <= -30:
+        if xPosition <= 10:
             xPosition += 20
     elif key == GLUT_KEY_RIGHT:
         xPosition += 20
-        if xPosition >= 1380:
+        if xPosition >= 1420:
             xPosition -=20
     elif key == GLUT_KEY_UP:
         yPosition += 20
-        if yPosition >= 450:
+        if yPosition >= 560:
             yPosition -=20
     elif key == GLUT_KEY_DOWN:
         yPosition -= 20
-        if yPosition <= -50:
+        if yPosition <= 40:
             yPosition += 20
     print(xPosition , ' ', yPosition)
     
@@ -240,86 +253,102 @@ def char2():    # Ghost
     kotak2(-2,-24,3,22,softgrey)     
     glPopMatrix()
     
-xpos_ghost2 = 1000
-ypos_ghost2 = random.randrange(-220,250,5)
+xpos_ghost2 = 3000 #3000
+ypos_ghost2 = 500
+yrandom_ghost2 = random.randrange(90,550,5)
+speed_ghost2 = 0.5
 
 def char3():    # Angry Ghost
     global xpos_ghost2,ypos_ghost2
     glPushMatrix()
     glTranslated(xpos_ghost2,ypos_ghost2,0)
     xpos_ghost2 -= 1
-    if xpos_ghost2 <= -2000:
-        xpos_ghost2 = 1000
-        ypos_ghost2 = random.randrange(-220,250,5)
-    kotak2(1219,337,3,25,black)
-    kotak2(1216,334,3,3,black)
-    kotak2(1213,331,3,3,black)
-    kotak2(1210,328,3,3,black)
-    kotak2(1207,325,5,3,black)
-    kotak2(1204,320,16,3,black)
-    kotak2(1201,304,4,6,black)
-    kotak2(1197,306,4,4,black)
-    kotak2(1193,304,8,4,black)
-    kotak2(1197,297,4,4,black)
-    kotak2(1201,294,4,9,black)
-    kotak2(1244,334,3,3,black)
-    kotak2(1247,331,3,3,black)
-    kotak2(1250,328,6,3,black)
-    kotak2(1253,322,22,3,black)
-    kotak2(1256,300,3,3,black)
-    kotak2(1259,297,3,8,black)
-    kotak2(1267,300,3,3,black)
-    kotak2(1270,297,13,3,black)
-    kotak2(1267,285,7,3,black)
-    kotak2(1264,278,3,3,black)
-    kotak2(1257,275,3,7,black)
-    kotak2(1228,272,3,31,black)
-    kotak2(1222,275,3,6,black)
-    kotak2(1219,278,3,3,black)
-    kotak2(1216,281,3,3,black)
-    kotak2(1213,284,3,3,black)
-    kotak2(1210,290,6,3,black)
-    kotak2(1244,304,4,7,black)
-    kotak2(1240,307,4,4,black)
-    kotak2(1236,304,8,4,black)
-    kotak2(1240,296,4,4,black)
-    kotak2(1244,294,4,9,black)
-    kotak2(1213,315,6,6,pink) # chik
-    kotak2(1234,315,6,6,pink) # chik
-    kotak2(1216,322,9,6,black) # eye
-    kotak2(1231,322,9,6,black) # eye
-    kotak2(1216,306,11,15,red) # - mouth -
-    kotak2(1214,304,9,2,black) #
-    kotak2(1216,306,2,3,black) #
-    kotak2(1219,308,2,3,black) #
-    kotak2(1222,306,2,3,black) #
-    kotak2(1226,308,2,3,black) # 
-    kotak2(1228,306,2,3,black) #
-    kotak2(1216,295,2,3,black) #
-    kotak2(1219,297,2,3,black) #
-    kotak2(1222,295,2,3,black) #
-    kotak2(1226,297,2,3,black) #
-    kotak2(1228,295,2,3,black) #
-    kotak2(1231,304,9,2,black) # - mouth -
-    kotak2(1201,300,3,6,softgrey) 
-    kotak2(1201,300,3,6,softgrey) 
-    kotak2(1207,320,20,3,softgrey) 
-    kotak2(1209,325,5,3,softgrey) 
-    kotak2(1213,327,3,3,softgrey) 
-    kotak2(1216,331,3,3,softgrey) 
-    kotak2(1219,334,3,25,softgrey) 
-    kotak2(1243,331,3,3,softgrey) 
-    kotak2(1247,328,6,3,softgrey) 
-    kotak2(1249,322,3,3,softgrey) 
-    kotak2(1210,293,3,3,softgrey) 
-    kotak2(1213,290,6,3,softgrey) 
-    kotak2(1216,284,3,3,softgrey) 
-    kotak2(1219,281,3,3,softgrey) 
-    kotak2(1222,278,3,6,softgrey) 
-    kotak2(1228,275,3,23,softgrey) 
+    if xpos_ghost2 <= -100:
+        xpos_ghost2 = 3000
+        ypos_ghost2 = yrandom_ghost2
+        
+    kotak2(-11,38,3,25,black) #ymax
+    kotak2(-14,35,3,3,black)
+    kotak2(14,35,3,3,black)
+    kotak2(-17,32,3,3,black)
+    kotak2(17,32,3,3,black)
+    kotak2(-20,29,3,3,black)
+    kotak2(20,29,6,3,black)
+    kotak2(-23,26,5,3,black)
+    kotak2(-26,21,20,3,black)
+    kotak2(-29,5,4,4,black)
+    kotak2(23,23,22,3,black)
+    kotak2(-33,-3,4,4,black)
+    kotak2(-35,7,3,6,black)
+    kotak2(-33,4,3,4,softgrey)
+    kotak2(-37,6,9,4,black) #xmin
+    kotak2(26,1,3,3,black)
+    kotak2(29,-2,3,8,black)
+    kotak2(37,1,3,3,black)
+    kotak2(-29,-5,4,9,black) 
+    kotak2(-20,-9,6,3,black)
+    kotak2(40,-2,13,3,black) #xmax
+    kotak2(-17,-15,3,3,black)
+    kotak2(-14,-18,3,3,black)
+    kotak2(-11,-21,3,3,black)
+    kotak2(-8,-24,3,6,black)
+    kotak2(37,-14,7,3,black)
+    kotak2(34,-21,3,3,black)
+    kotak2(27,-24,3,7,black)
+    kotak2(-2,-27,3,29,black) #ymin
+    kotak2(14,6,4,6,black)   
+    kotak2(6,5,8,4,black)   
+    kotak2(8,8,4,6,black)   
+    kotak2(14,-5,4,9,black)   
+    kotak2(10,-3,4,4,black)   
+    kotak2(-17,17,6,6,pink) #chick
+    kotak2(5,17,6,6,pink) #chick
+    kotak2(-14,23,9,6,black) #eye
+    kotak2(1,23,9,6,black) #eye
+    kotak2(-14,7,11,15,red) #mouth
+    kotak2(-2,7,2,3,black) #mouth
+    kotak2(-5,9,2,3,black) #mouth
+    kotak2(-8,7,2,3,black) #mouth
+    kotak2(-11,9,2,3,black) #mouth
+    kotak2(-14,7,2,3,black) #mouth
+    kotak2(-2,-4,2,3,black) #mouth
+    kotak2(-5,-2,2,3,black) #mouth
+    kotak2(-8,-4,2,3,black) #mouth
+    kotak2(-11,-2,2,3,black) #mouth
+    kotak2(-14,-4,2,3,black) #mouth
+    kotak2(-16,5,9,2,black) #mouth
+    kotak2(1,5,9,2,black) #mouth
+    kotak2(-29,1,3,6,softgrey)   
+    kotak2(-23,21,20,3,softgrey)   
+    kotak2(-20,26,5,3,softgrey)   
+    kotak2(-17,29,3,3,softgrey)   
+    kotak2(-14,32,3,3,softgrey)   
+    kotak2(-11,35,3,25,softgrey)   
+    kotak2(13,32,3,3,softgrey)   
+    kotak2(17,29,6,3,softgrey)   
+    kotak2(20,23,3,3,softgrey)   
+    kotak2(-20,-6,3,3,softgrey)   
+    kotak2(-17,-9,6,3,softgrey)   
+    kotak2(-14,-15,3,3,softgrey)   
+    kotak2(-11,-18,3,3,softgrey)   
+    kotak2(-8,-21,3,6,softgrey)   
+    kotak2(-2,-24,3,22,softgrey)   
     glPopMatrix()
 
 #=== Engine =====================================================================
+def scoring():
+    global score_player, fix_score_player,level,speed_ghost1,speed_ghost2,speed_ghost3
+    if crash == False:
+        score_player += 1
+        if score_player % 10000 == 0:
+            level += 1
+            speed_ghost1 += 0.1
+            speed_ghost2 += 0.1
+            speed_ghost3 += 0.1
+            print("speed1",speed_ghost1)
+            print("speed2",speed_ghost2)
+    else:
+        score_player += 0
 
 def mouse_play_game(button, state, x, y):       # Click start game
     global play
@@ -327,7 +356,20 @@ def mouse_play_game(button, state, x, y):       # Click start game
         if 610 <= x <= 800 and 245 <= y <= 345:
             play = True
         print(x,' ',y)
-
+def gameover():
+    global fix_score_player
+    glColor3ub(237,35,36)
+    glBegin(GL_QUADS)
+    glVertex2f(570,450) 
+    glVertex2f(570,320) 
+    glVertex2f(800,320) 
+    glVertex2f(800,450) 
+    glEnd()
+    drawTextBold("G A M E O V E R",600,400)
+    drawText("Enter To Play Again",600,370,38, 33, 98)
+    drawText('YOUR FINAL SCORE: ',600,350,0,0,0) 
+    drawTextNum(fix_score_player,750,350,0,0,0) 
+        
 def start_game():
     glPushMatrix()
     glColor3b(36, 150, 127)
@@ -349,10 +391,34 @@ def start_game():
     drawTextBold("P L A Y G A M E", 640, 285)
 
 def play_game():
+    global play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player
     toplimit()
     botlimit()
-    char2()
-    char1() 
+    if crash == False:
+        drawText('LEVEL : ',1000,10,0,0,0) #player 1
+        drawTextNum(level,1070,10,0,0,0) # player 1
+        drawText('SCORE : ',1200,10,0,0,0) #player 1
+        drawTextNum(score_player,1300,10,0,0,0) # player 1
+        char2()
+        char3()
+        char4()
+        char1() 
+        scoring()
+        ypos_ghost1 = yrandom_ghost1
+        ypos_ghost2 = yrandom_ghost2
+        if xpos_ghost1-55 <= xPosition <= xpos_ghost1+63 and ypos_ghost1-79 <= yPosition <= ypos_ghost1+78:
+            crash == True
+            score_player += 0
+            fix_score_player = score_player
+            gameover()   
+            play == False
+            crash == False
+        if xpos_ghost2-55 <= xPosition <= xpos_ghost2+63 and ypos_ghost2-79 <= yPosition <= ypos_ghost2+78:
+            crash == True
+            score_player += 0
+            fix_score_player = score_player
+            gameover()
+            play == False
 
 #================================================================================
 
