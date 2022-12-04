@@ -167,12 +167,13 @@ def mySpecialKeyboard(key, x, y):
             yPosition += 20
     print(xPosition , ' ', yPosition)
     
-xpos_ghost1 = 1000
-ypos_ghost1 = random.randrange(-220,250,5)
+xpos_ghost1 = 1500 #1500
+ypos_ghost1 = 90 #90
+yrandom_ghost1 = random.randrange(90,550,5)
+speed_ghost1 = 0.2
 
 def kotak2(x,y,height,width,color):
     glBegin(GL_POLYGON) 
-
     glColor3ub(color[0],color[1],color[2])
     glVertex2f(x , y) # pojok kiri atas
     glVertex2f(x , y - height)
@@ -181,63 +182,62 @@ def kotak2(x,y,height,width,color):
     glEnd()
 
 def char2():    # Ghost
-    global xpos_ghost1,ypos_ghost1
+    global xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1,yrandom_ghost1
     glPushMatrix()
     glTranslated(xpos_ghost1,ypos_ghost1,0)
-    xpos_ghost1 -= 0.5
-    if xpos_ghost1 <= -1000:
-        xpos_ghost1 = 1000
-        ypos_ghost1 = random.randrange(-220,250,5)
-    kotak2(1019,337,3,25,black)
-    kotak2(1016,334,3,3,black)
-    kotak2(1013,331,3,3,black)
-    kotak2(1010,328,3,3,black)
-    kotak2(1007,325,5,3,black)
-    kotak2(1004,320,16,3,black)
-    kotak2(1001,304,4,6,black)
-    kotak2(997,300,6,4,black)
-    kotak2(1001,294,4,9,black)
-    kotak2(1044,334,3,3,black)
-    kotak2(1047,331,3,3,black)
-    kotak2(1050,328,6,3,black)
-    kotak2(1053,322,22,3,black)
-    kotak2(1056,300,3,3,black)
-    kotak2(1059,297,3,8,black)
-    kotak2(1067,300,3,3,black)
-    kotak2(1070,297,13,3,black)
-    kotak2(1067,285,7,3,black)
-    kotak2(1064,278,3,3,black)
-    kotak2(1057,275,3,7,black)
-    kotak2(1028,272,3,31,black)
-    kotak2(1022,275,3,6,black)
-    kotak2(1019,278,3,3,black)
-    kotak2(1016,281,3,3,black)
-    kotak2(1013,284,3,3,black)
-    kotak2(1010,290,6,3,black)
-    kotak2(1038,304,3,9,black)
-    kotak2(1035,301,6,3,black)
-    kotak2(1038,296,3,11,black)
-    kotak2(1013,315,6,6,pink) # chik
-    kotak2(1034,315,6,6,pink) # chik
-    kotak2(1016,322,9,6,black) # eye
-    kotak2(1031,322,9,6,black) # eye
-    kotak2(1022,309,3,7,black) # mouth
-    kotak2(1001,300,3,6,softgrey) 
-    kotak2(1001,300,3,6,softgrey) 
-    kotak2(1007,320,20,3,softgrey) 
-    kotak2(1009,325,5,3,softgrey) 
-    kotak2(1013,327,3,3,softgrey) 
-    kotak2(1016,331,3,3,softgrey) 
-    kotak2(1019,334,3,25,softgrey) 
-    kotak2(1043,331,3,3,softgrey) 
-    kotak2(1047,328,6,3,softgrey) 
-    kotak2(1049,322,3,3,softgrey) 
-    kotak2(1010,293,3,3,softgrey) 
-    kotak2(1013,290,6,3,softgrey) 
-    kotak2(1016,284,3,3,softgrey) 
-    kotak2(1019,281,3,3,softgrey) 
-    kotak2(1022,278,3,6,softgrey) 
-    kotak2(1028,275,3,23,softgrey) 
+    xpos_ghost1 -= speed_ghost1
+    if xpos_ghost1 <= -50:
+        xpos_ghost1 = 1500
+        ypos_ghost1 = yrandom_ghost1
+    kotak2(-11,38,3,25,black) #ymax
+    kotak2(-14,35,3,3,black)
+    kotak2(14,35,3,3,black)
+    kotak2(-17,32,3,3,black)
+    kotak2(17,32,3,3,black)
+    kotak2(-20,29,3,3,black)
+    kotak2(20,29,6,3,black)
+    kotak2(-23,26,5,3,black)
+    kotak2(-26,21,20,3,black)
+    kotak2(-29,5,4,4,black)
+    kotak2(23,23,22,3,black)
+    kotak2(-33,1,6,4,black) #xmin
+    kotak2(26,1,3,3,black)
+    kotak2(29,-2,3,8,black)
+    kotak2(37,1,3,3,black)
+    kotak2(-29,-5,4,9,black)
+    kotak2(-20,-9,6,3,black)
+    kotak2(40,-2,13,3,black) #xmax
+    kotak2(-17,-15,3,3,black)
+    kotak2(-14,-18,3,3,black)
+    kotak2(-11,-21,3,3,black)
+    kotak2(-8,-24,3,6,black)
+    kotak2(37,-14,7,3,black)
+    kotak2(34,-21,3,3,black)
+    kotak2(27,-24,3,7,black)
+    kotak2(-2,-27,3,29,black) #ymin
+    kotak2(8,5,3,9,black)   
+    kotak2(5,2,6,3,black)   
+    kotak2(8,-4,3,11,black)   
+    kotak2(-17,17,6,6,pink) #chick
+    kotak2(5,17,6,6,pink) #chick
+    kotak2(-14,23,9,6,black) #eye
+    kotak2(1,23,9,6,black) #eye
+    kotak2(-8,10,3,8,black) #mouth
+    kotak2(-29,1,3,6,softgrey)   
+    kotak2(-23,21,20,3,softgrey)   
+    kotak2(-20,26,5,3,softgrey)   
+    kotak2(-17,29,3,3,softgrey)   
+    kotak2(-14,32,3,3,softgrey)   
+    kotak2(-11,35,3,25,softgrey)   
+    kotak2(13,32,3,3,softgrey)   
+    kotak2(17,29,6,3,softgrey)   
+    kotak2(20,23,3,3,softgrey)   
+    kotak2(-20,-6,3,3,softgrey)   
+    kotak2(-17,-9,6,3,softgrey)   
+    kotak2(-14,-15,3,3,softgrey)   
+    kotak2(-11,-18,3,3,softgrey)   
+    kotak2(-8,-21,3,6,softgrey)   
+    kotak2(-2,-24,3,22,softgrey)     
     glPopMatrix()
     
 xpos_ghost2 = 1000
