@@ -81,14 +81,16 @@ def botlimit():
 def kotak(x,y,height,width,color):
     glBegin(GL_POLYGON) 
     glColor3ub(color[0],color[1],color[2])
-    glVertex2f(x+50,y+100) # pojok kiri atas
-    glVertex2f((x+50), (y+100) - height)
-    glVertex2f((x+50) + width, (y+100) - height)
-    glVertex2f((x+50) + width, (y+100))
+    glVertex2f(x,y) # pojok kiri atas
+    glVertex2f(x, y - height)
+    glVertex2f(x + width, y- height)
+    glVertex2f(x + width, y)
     glEnd()
 
 def char1():    # Main Character
+    glPushMatrix()
     glTranslated(xPosition, yPosition, 0)
+
     kotak(0,4,4,17,lightcream)
     kotak(-4,19,15,21,lightcream)
     kotak(17,10,6,5,lightcream)
@@ -114,14 +116,15 @@ def char1():    # Main Character
     kotak(6,-22,5,6,lightgrey)
     kotak(-15,-17,5,11,grey)
     kotak(-15,-22,5,6,grey)
+
     kotak(-14,0,5,31,black)
     kotak(17,4,5,5,black)
     kotak(22,23,19,5,black)
-    kotak(27,40,21,5,black)
-    kotak(20,50,10,8,black)
-    kotak(-20,50,6,48,black)
+    kotak(27,40,21,5,black) #xmax
+    kotak(20,50,10,8,black) 
+    kotak(-20,50,6,48,black) #ymax
     kotak(-25,44,4,5,black)
-    kotak(-30,40,30,5,black)
+    kotak(-30,40,30,5,black) #xmin
     kotak(-25,10,6,5,black)
     kotak(-20,4,4,6,black)
     kotak(-25,0,7,5,black)
@@ -132,7 +135,7 @@ def char1():    # Main Character
     kotak(-10,-22,5,7,black)
     kotak(-3,-22,9,6,black)
     kotak(2,-22,9,4,black)
-    kotak(6,-27,4,6,black)
+    kotak(6,-27,4,6,black) #ymin
     kotak(12,-5,7,5,black)
     kotak(12,-11,6,4,black)
     kotak(12,-17,10,5,black)
@@ -141,6 +144,7 @@ def char1():    # Main Character
     kotak(21,-11,6,5,black)
     kotak(14,19,9,6,black)  # Eye
     kotak(-10,19,9,6,black) # Eye
+    glPopMatrix()
 
 def mySpecialKeyboard(key, x, y): 
     global xPosition
