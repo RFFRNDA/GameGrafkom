@@ -16,19 +16,19 @@ level = 1
 
 # Ghost
 xpos_ghost1 = 1500 #1500
-ypos_ghost1 = 90 #90
+ypos_ghost1 = random.randrange(90,550,5)
 yrandom_ghost1 = random.randrange(90,550,5)
 speed_ghost1 = 0.3
 
 # Angry Ghost
 xpos_ghost2 = 3000 #3000
-ypos_ghost2 = 500
+ypos_ghost2 = random.randrange(90,550,5)
 yrandom_ghost2 = random.randrange(90,550,5)
 speed_ghost2 = 0.6
 
 # Fire Ghost
 xpos_ghost3 = 25000
-ypos_ghost3 = 300
+ypos_ghost3 = random.randrange(85,560,2)
 speed_ghost3 = 2.5
 yrandom_ghost3 = random.randrange(85,560,2)
 
@@ -463,17 +463,17 @@ def myKeyboard(key,x,y):
         level = 1
         # Ghost
         xpos_ghost1 = 1500 #1500
-        ypos_ghost1 = 90 #90
+        ypos_ghost1 = random.randrange(90,550,5)
         yrandom_ghost1 = random.randrange(90,550,5)
         speed_ghost1 = 0.2
         # Angry Ghost
         xpos_ghost2 = 3000 #3000
-        ypos_ghost2 = 500
+        ypos_ghost2 = random.randrange(90,550,5)
         yrandom_ghost2 = random.randrange(90,550,5)
         speed_ghost2 = 0.5
         # Fire Ghost
-        xpos_ghost3 = 5000
-        ypos_ghost3 = 300
+        xpos_ghost3 = 25000
+        ypos_ghost3 = random.randrange(85,560,2)
         speed_ghost3 = 1
         yrandom_ghost3 = random.randrange(85,560,2)
  
