@@ -29,8 +29,9 @@ speed_ghost2 = 0.6
 # Fire Ghost
 xpos_ghost3 = 25000
 ypos_ghost3 = random.randrange(85,560,2)
-speed_ghost3 = 2.5
 yrandom_ghost3 = random.randrange(85,560,2)
+speed_ghost3 = 2.5
+
 
 
 #=== draw text ================================================================================
@@ -474,9 +475,9 @@ def myKeyboard(key,x,y):
         # Fire Ghost
         xpos_ghost3 = 25000
         ypos_ghost3 = random.randrange(85,560,2)
-        speed_ghost3 = 1
         yrandom_ghost3 = random.randrange(85,560,2)
- 
+        speed_ghost3 = 1
+
 def mouse_play_game(button, state, x, y):       # Click start game
     global play,crash
     if button == GLUT_LEFT_BUTTON:
@@ -552,16 +553,17 @@ def start_game():
     glEnd()
     glPopMatrix()
     drawTextBold("P L A Y G A M E", 640, 285)
+    drawText("Use arrow keys to move your character",560,230,0,0,0)
     
 def play_game():
     global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player,xpos_ghost3,ypos_ghost3,speed_ghost3,yrandom_ghost3
     toplimit()
     botlimit()
     if crash == False:
-        drawText('LEVEL : ',1000,10,0,0,0) #player 1
-        drawTextNum(level,1070,10,0,0,0) # player 1
-        drawText('SCORE : ',1200,10,0,0,0) #player 1
-        drawTextNum(score_player,1300,10,0,0,0) # player 1
+        drawText('LEVEL : ',1000,10,0,0,0) 
+        drawTextNum(level,1070,10,0,0,0) 
+        drawText('SCORE : ',1200,10,0,0,0) 
+        drawTextNum(score_player,1300,10,0,0,0) 
         char2()
         char3()
         char4()
