@@ -17,21 +17,17 @@ level = 1
 # Ghost
 xpos_ghost1 = 1500 #1500
 ypos_ghost1 = random.randrange(90,550,5)
-yrandom_ghost1 = random.randrange(90,550,5)
-speed_ghost1 = 0.3
+speed_ghost1 = 0.4
 
 # Angry Ghost
 xpos_ghost2 = 3000 #3000
 ypos_ghost2 = random.randrange(90,550,5)
-yrandom_ghost2 = random.randrange(90,550,5)
-speed_ghost2 = 0.6
+speed_ghost2 = 0.7
 
 # Fire Ghost
 xpos_ghost3 = 25000
 ypos_ghost3 = random.randrange(85,560,2)
-yrandom_ghost3 = random.randrange(85,560,2)
 speed_ghost3 = 2.5
-
 
 
 #=== draw text ================================================================================
@@ -449,34 +445,31 @@ def mySpecialKeyboard(key, x, y):
                     crash = False                   
         else:
             yPosition -= 0
-    print(xPosition , ' ', yPosition)
     
 def myKeyboard(key,x,y):
     global crash,play,score_player,fix_score_player,level,xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,speed_ghost2,yrandom_ghost2,xpos_ghost3,ypos_ghost3,speed_ghost3,yrandom_ghost3
-    if ord(key) == ord(b'\r'):
-        # Reset All Variable
-        crash= False
-        play = False
-        xPosition = 50      #50
-        yPosition = 100     #100
-        score_player = 0
-        fix_score_player = 0
-        level = 1
-        # Ghost
-        xpos_ghost1 = 1500 #1500
-        ypos_ghost1 = random.randrange(90,550,5)
-        yrandom_ghost1 = random.randrange(90,550,5)
-        speed_ghost1 = 0.2
-        # Angry Ghost
-        xpos_ghost2 = 3000 #3000
-        ypos_ghost2 = random.randrange(90,550,5)
-        yrandom_ghost2 = random.randrange(90,550,5)
-        speed_ghost2 = 0.5
-        # Fire Ghost
-        xpos_ghost3 = 25000
-        ypos_ghost3 = random.randrange(85,560,2)
-        yrandom_ghost3 = random.randrange(85,560,2)
-        speed_ghost3 = 1
+    if crash == True:
+        if ord(key) == ord(b'\r'):
+            # Reset All Variable
+            crash= False
+            play = False
+            xPosition = 50      #50
+            yPosition = 100     #100
+            score_player = 0
+            fix_score_player = 0
+            level = 1
+            # Ghost
+            xpos_ghost1 = 1500 #1500
+            ypos_ghost1 = random.randrange(90,550,5)
+            speed_ghost1 = 0.4
+            # Angry Ghost
+            xpos_ghost2 = 3000 #3000
+            ypos_ghost2 = random.randrange(90,550,5)
+            speed_ghost2 = 0.7
+            # Fire Ghost
+            xpos_ghost3 = 15000
+            ypos_ghost3 = random.randrange(85,560,2)
+            speed_ghost3 = 2.5
 
 def mouse_play_game(button, state, x, y):       # Click start game
     global play,crash
@@ -514,6 +507,7 @@ def scoring():
             print("speed2",speed_ghost2)
     else:
         score_player += 0
+        
 def collision():
     global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player
     if xpos_ghost1-55 <= xPosition <= xpos_ghost1+63 and ypos_ghost1-79 <= yPosition <= ypos_ghost1+78:
