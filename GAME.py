@@ -16,18 +16,18 @@ level = 1
 
 # Ghost
 xpos_ghost1 = 1500 #1500
-ypos_ghost1 = random.randrange(90,550,5)
+ypos_ghost1 = random.randrange(80,550,25)
 speed_ghost1 = 0.4
 
 # Angry Ghost
 xpos_ghost2 = 3000 #3000
-ypos_ghost2 = random.randrange(90,550,5)
+ypos_ghost2 = random.randrange(80,550,25)
 speed_ghost2 = 0.7
 
 # Fire Ghost
-xpos_ghost3 = 25000
-ypos_ghost3 = random.randrange(85,560,2)
-speed_ghost3 = 2.5
+xpos_ghost3 = 15000
+ypos_ghost3 = random.randrange(70,530,25)
+speed_ghost3 = 2.3
 
 
 #=== draw text ================================================================================
@@ -177,13 +177,13 @@ def char1():    # Main Character
     glPopMatrix()
 
 def char2():    # Ghost
-    global xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1,yrandom_ghost1
+    global xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1
     glPushMatrix()
     glTranslated(xpos_ghost1,ypos_ghost1,0)
     xpos_ghost1 -= speed_ghost1
     if xpos_ghost1 <= -50:
         xpos_ghost1 = 1500
-        ypos_ghost1 = yrandom_ghost1
+        ypos_ghost1 = random.randrange(80,550,25)
     kotak(-11,38,3,25,black) #ymax
     kotak(-14,35,3,3,black)
     kotak(14,35,3,3,black)
@@ -236,13 +236,13 @@ def char2():    # Ghost
     glPopMatrix()
     
 def char3():    # Angry Ghost
-    global xpos_ghost2,ypos_ghost2,speed_ghost2,yrandom_ghost2
+    global xpos_ghost2,ypos_ghost2,speed_ghost2
     glPushMatrix()
     glTranslated(xpos_ghost2,ypos_ghost2,0)
     xpos_ghost2 -= speed_ghost2
     if xpos_ghost2 <= -100:
         xpos_ghost2 = 3000
-        ypos_ghost2 = yrandom_ghost2
+        ypos_ghost2 = random.randrange(80,550,25)
     kotak(-11,38,3,25,black) #ymax
     kotak(-14,35,3,3,black)
     kotak(14,35,3,3,black)
@@ -312,13 +312,13 @@ def char3():    # Angry Ghost
     glPopMatrix()
     
 def char4():    # Fire Ghost
-    global xpos_ghost3,ypos_ghost3,yrandom_ghost3,speed_ghost3
+    global xpos_ghost3,ypos_ghost3,yrandom_ghost3
     glPushMatrix()
     glTranslated(xpos_ghost3,ypos_ghost3,0)
     xpos_ghost3 -= speed_ghost3
     if xpos_ghost3 <= -100:
-        xpos_ghost3= 25000
-        ypos_ghost3 = yrandom_ghost3
+        xpos_ghost3= 15000
+        ypos_ghost3 = random.randrange(70,530,25)
     kotak(-9,-8,7,2,red)
     kotak(-15,6,21,6,red)
     kotak(-13,11,5,6,red)
@@ -460,16 +460,16 @@ def myKeyboard(key,x,y):
             level = 1
             # Ghost
             xpos_ghost1 = 1500 #1500
-            ypos_ghost1 = random.randrange(90,550,5)
+            ypos_ghost1 = random.randrange(80,550,25)
             speed_ghost1 = 0.4
             # Angry Ghost
             xpos_ghost2 = 3000 #3000
-            ypos_ghost2 = random.randrange(90,550,5)
+            ypos_ghost2 = random.randrange(80,550,25)
             speed_ghost2 = 0.7
             # Fire Ghost
             xpos_ghost3 = 15000
-            ypos_ghost3 = random.randrange(85,560,2)
-            speed_ghost3 = 2.5
+            ypos_ghost3 = random.randrange(70,530,25)
+            speed_ghost3 = 2.3
 
 def mouse_play_game(button, state, x, y):       # Click start game
     global play,crash
