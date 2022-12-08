@@ -27,7 +27,7 @@ speed_ghost2 = 0.7
 # Fire Ghost
 xpos_ghost3 = 15000
 ypos_ghost3 = random.randrange(70,530,25)
-speed_ghost3 = 2.3
+speed_ghost3 = 2.5
 
 
 #=== draw text ================================================================================
@@ -469,7 +469,7 @@ def myKeyboard(key,x,y):
             # Fire Ghost
             xpos_ghost3 = 15000
             ypos_ghost3 = random.randrange(70,530,25)
-            speed_ghost3 = 2.3
+            speed_ghost3 = 2.5
 
 def mouse_play_game(button, state, x, y):       # Click start game
     global play,crash
