@@ -312,7 +312,7 @@ def char3():    # Angry Ghost
     glPopMatrix()
     
 def char4():    # Fire Ghost
-    global xpos_ghost3,ypos_ghost3,yrandom_ghost3
+    global xpos_ghost3,ypos_ghost3,speed_ghost3
     glPushMatrix()
     glTranslated(xpos_ghost3,ypos_ghost3,0)
     xpos_ghost3 -= speed_ghost3
@@ -400,7 +400,7 @@ def char4():    # Fire Ghost
 
 #=== Control ====================================================================
 def mySpecialKeyboard(key, x, y): 
-    global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player,xpos_ghost3,ypos_ghost3,speed_ghost3,yrandom_ghost3
+    global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,xpos_ghost2,ypos_ghost2,score_player,fix_score_player,xpos_ghost3,ypos_ghost3,speed_ghost3
     if key == GLUT_KEY_LEFT:
         if crash == False:
             if collision():
@@ -447,7 +447,7 @@ def mySpecialKeyboard(key, x, y):
             yPosition -= 0
     
 def myKeyboard(key,x,y):
-    global crash,play,score_player,fix_score_player,level,xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,speed_ghost2,yrandom_ghost2,xpos_ghost3,ypos_ghost3,speed_ghost3,yrandom_ghost3
+    global crash,play,score_player,fix_score_player,level,xPosition,yPosition,xpos_ghost1,ypos_ghost1,speed_ghost1,xpos_ghost2,ypos_ghost2,speed_ghost2,xpos_ghost3,ypos_ghost3,speed_ghost3
     if crash == True:
         if ord(key) == ord(b'\r'):
             # Reset All Variable
@@ -477,7 +477,6 @@ def mouse_play_game(button, state, x, y):       # Click start game
         if 610 <= x <= 800 and 245 <= y <= 345:
             crash = False
             play = True
-        print(x,' ',y)
         
 #=== Engine =====================================================================
 def gameover():
@@ -495,7 +494,7 @@ def gameover():
     drawTextNum(fix_score_player,750,350,0,0,0)
     
 def scoring():
-    global level,crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player,speed_ghost1,speed_ghost2,speed_ghost3,yrandom_ghost3
+    global level,crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,xpos_ghost2,ypos_ghost2,score_player,fix_score_player,speed_ghost1,speed_ghost2,speed_ghost3,yrandom_ghost3
     collision()
     if crash == False:
         score_player += 1
@@ -503,13 +502,11 @@ def scoring():
             level += 1
             speed_ghost1 += 0.1
             speed_ghost2 += 0.1
-            print("speed1",speed_ghost1)
-            print("speed2",speed_ghost2)
     else:
         score_player += 0
         
 def collision():
-    global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,yrandom_ghost1,xpos_ghost2,ypos_ghost2,yrandom_ghost2,score_player,fix_score_player
+    global crash,play,yPosition,xPosition,xpos_ghost1,ypos_ghost1,xpos_ghost2,ypos_ghost2,score_player,fix_score_player
     if xpos_ghost1-55 <= xPosition <= xpos_ghost1+63 and ypos_ghost1-79 <= yPosition <= ypos_ghost1+78:
         fix_score_player = score_player
         crash = True
